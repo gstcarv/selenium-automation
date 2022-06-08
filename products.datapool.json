@@ -1,0 +1,10 @@
+{
+    "renner_url": "https://www.lojasrenner.com.br/",
+    "selectors": {
+        "search_field": "input[placeholder='Buscar produtos']",
+        "product_box": "[class^='ProductBox_']"
+    },
+    "query": {
+        "search_query": "Moletom"
+    }
+}

@@ -3,12 +3,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 import json
 
 with open('products.datapool.json', 'r') as f:
     datapool = json.load(f)
 
-driver = webdriver.Chrome()
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+if config["driver"]["firefox"]:
+    driver = webdriver.Firefox()
+else:
+    driver = webdriver.Chrome()
+
 driver.get(datapool["renner_url"])
 
 search_field = driver.find_element(
@@ -27,4 +35,4 @@ results = driver.find_elements(by=By.CSS_SELECTOR, value=datapool["selectors"]["
 
 assert len(results) != 0
 
-driver.close()
+# driver.close()
